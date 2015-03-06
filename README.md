@@ -103,3 +103,37 @@ e.g. Response Body
 "message": "Successfully deleted"
 }
 ```
+
+### asyncOrchestrate - Restify Client to invoke async orchestration services served through REST API backed by Express; Includes results from running loadtests against these orchestration APIs
+
+Build and Start the server
+```sh
+$ cd asyncOrchestrate
+$ npm install
+$ npm start
+```
+
+Run RestifyClient
+```sh
+$ cd asyncOrchestrate
+$ node asyncOrchestrateRestifyClient.js
+```
+
+API Endpoints
+- GET localhost:3000/orchestrate/async/parallel -> fetch and orchestrate results from ecx sample endpoints using async parallel
+- GET localhost:3000/orchestrate/async/series -> fetch and orchestrate results from ecx sample endpoints using async series
+- GET localhost:3000/orchestrate/async/waterfall -> fetch and orchestrate results from ecx sample endpoints using async waterfall
+
+ECX sample endpoints used:
+- http://sv2lxecxasdi01.corp.equinix.com:8080/ecx/languages/en.json
+- http://sv2lxecxasdi01.corp.equinix.com:8080/ecx/metaData
+- http://sv2lxecxasdi01.corp.equinix.com:8080/ecx/user?email=ashsrivastava%40equinix.com
+
+loadtests summary (3 runs of hitting APIs 50 times each):
+| parallel     | series    | waterfall   |
+| :----------: | :-------: | :---------: |
+| 15.24 sec    | 22.97 sec |  18.98 sec  |
+| 9.8 sec      | 18.31 sec |  19.06 sec  |
+| 12.56 sec    | 18.62 sec |  17.18 sec  |
+
+loadtests results also included under asyncOrchestrate/loadtests/
