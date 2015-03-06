@@ -130,8 +130,9 @@ ECX sample endpoints used:
 - http://sv2lxecxasdi01.corp.equinix.com:8080/ecx/user?email=ashsrivastava%40equinix.com
 
 loadtests summary (3 runs of hitting APIs 50 times each):
-| parallel     | series    | waterfall   |
-| :----------: | :-------: | :---------: |
+
+| parallel | series | waterfall |
+| ------------- | ------------- | ------------- |
 | 15.24 sec    | 22.97 sec |  18.98 sec  |
 | 9.8 sec      | 18.31 sec |  19.06 sec  |
 | 12.56 sec    | 18.62 sec |  17.18 sec  |
