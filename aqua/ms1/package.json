@@ -1,0 +1,61 @@
+{
+  "name": "ms1",
+  "version": "0.0.1",
+  "description": "Aqua.js generic microservice template",
+  "license": "ISC",
+  "keywords": [
+    "aqua microservice"
+  ],
+  "scripts": {
+    "start": "node server.js",
+    "poststart": "grunt coverage",
+    "test": "grunt test",
+    "httptest": "mocha -R spec test/test.js",
+    "clean": "rm -f controllers/* impls/* routes/* models/* && rm -rf tests"
+  },
+  "homepage": "",
+  "repository": {},
+  "bugs": {},
+  "dependencies": {
+    "aquajs": "*",
+    "aquajs-swagger-ui": "*",
+    "async": "*",
+    "express": "*",
+    "lodash": "^3.0.0",
+    "persist": "^0.2.7",
+    "sails-mongo": "^0.10.5",
+    "waterline": "^0.10.16"
+  },
+  "devDependencies": {
+    "grunt-mocha-istanbul": "^2.1.0",
+    "grunt-mocha-test": "^0.12.1",
+    "istanbul": "^0.3.2",
+    "mocha": "^2.0.1",
+    "request": "^2.49.0"
+  },
+  "publishConfig": {
+    "registry": "http://nexus.corp.equinix.com/nexus/content/repositories/Equinix-AquaJS-Release/"
+  },
+  "readme": "## AquaJS Microservice Blueprint Module\r\n\r\nThis module is a blueprint for a microservice built using AquaJS. Using this blueprint, you can easily create microservices and/or test other modules in the AquaJS framework.\r\n\r\nThe easiest way to contribute to AquaJS modules is by using [npm-link](https://www.npmjs.org/doc/cli/npm-link.html). npm-link allows you to \"trick\" npm into using packages located anywhere on your local computer (rather than in node_modules). For example, by npm-linking to the aquajs folder that you cloned from this repo, you can use the package without installing it from the npm registry.\r\n\r\n## Setting Up Global npm Links\r\n\r\nBefore doing anything else, cd into each package folder contained in this repo (i.e, aquajs, aquajs-logger, aquajs-scheduler, etc) and type the following commands:\r\n\r\n```\r\nnpm link\r\nnpm install\r\n```\r\n\r\nThis will install the package dependencies and create a global symbolic link to the package so that it can be used by other packages without being installed from the registry.\r\n\r\nOnce global symbolic links exist for all packages, you can test the microservice blueprint module by cding into it and typing:\r\n\r\n```\r\nnpm link @aqua/aquajs @aqua/aquajs-cli\r\nnpm install\r\n```\r\n\r\n## Generate the microservice from .yml file\r\nOnce you've installed (or npm linked to) your dependencies, cd into the aquajs-microservice folder and enter:\r\n\r\n```\r\naqua scaffold\r\nnode server.js\r\n```\r\n\r\n## Suggested Reading\r\nTo learn more about microservice architecture, see the following articles:\r\n\r\n- http://martinfowler.com/articles/microservices.html\r\n- http://microservices.io\r\n",
+  "readmeFilename": "README.md",
+  "gitHead": "2e164720da8ee7980df4ca9ad1e7f6b68c06630e",
+  "_id": "aquajs-microservice@0.0.57",
+  "_shasum": "06b7e5c7a97553b20b44c1f888bf793151b496dd",
+  "_from": "aquajs-microservice@*",
+  "_npmVersion": "1.4.28",
+  "_npmUser": {
+    "name": "tpujals",
+    "email": "tpujals@equinix.com"
+  },
+  "maintainers": [
+    {
+      "name": "tpujals",
+      "email": "tpujals@equinix.com"
+    }
+  ],
+  "dist": {
+    "shasum": "06b7e5c7a97553b20b44c1f888bf793151b496dd",
+    "tarball": "http://nexus.corp.equinix.com/nexus/content/groups/Equinix-NPM-Release/aquajs-microservice/-/aquajs-microservice-0.0.57.tgz"
+  },
+  "_resolved": "http://nexus.corp.equinix.com/nexus/content/groups/Equinix-NPM-Release/aquajs-microservice/-/aquajs-microservice-0.0.57.tgz"
+}

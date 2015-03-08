@@ -1,0 +1,171 @@
+resourcePath: /Sample-Example-Order_App
+description: All about API
+version: 1.0.0
+target: microservice
+host: localhost:8090/ecx
+# apis and models go below; for reference see:
+# http://wiki.corp.equinix.com/confluence/display/innovation/YAML+Specifications+for+Scaffolding+and+TDD+Enforcement
+apis:
+- path: /metaData
+  operations:
+  - httpMethod: GET
+    summary: Get all the orders for a pizza order example
+    notes: Returns all orders of a pizza order example
+    responseClass: metadata
+    requestClass: metadata
+    nickname: getMetaData
+    consumes:
+    - text/json
+  - httpMethod: POST
+    summary: Add a new order
+    notes:  adds new pizza order
+    responseClass: OrderAdd
+    requestClass: Orders
+    nickname: postOrder
+    consumes:
+    - application/json
+    parameters:
+    - name: body
+      dataType: object
+      paramType: body
+      required: true
+      description: Order to be added
+- path: /orders/{id}
+  operations:
+  - httpMethod: GET
+    summary: Get a particular pizza order by id
+    notes: Returns an pizza order with specified id
+    responseClass: Orders
+    requestClass: Orders
+    nickname: getOrderById
+    consumes:
+    - text/json
+    parameters:
+    - name: id
+      dataType: integer
+      paramType: path
+      required: true
+      description: Pizza Order Id to be fetched
+  - httpMethod: DELETE
+    summary: Delete the particular  pizza order by id
+    notes: Delete an pizza order with specified id
+    responseClass: Status
+    requestClass: Orders
+    nickname: deleteOrderById
+    consumes:
+    - text/json
+    parameters:
+    - name: id
+      dataType: integer
+      paramType: path
+      required: true
+      description: Order Id for pizza to be deleted
+  - httpMethod: PUT
+    summary: Update the particular pizza order by id
+    notes: updates an pizza order with specified id
+    responseClass: Orders
+    requestClass: Orders
+    nickname: updateOrderById
+    consumes:
+    - application/json
+    parameters:
+    - name: id
+      dataType: integer
+      paramType: path
+      required: true
+      description: Order Id for pizza  to be updated
+
+    - name: body
+      dataType: object
+      paramType: body
+      required: true
+      description: Order for pizza  to be updated
+- path: /pizza/{id}
+  operations:
+  - httpMethod: GET
+    summary: Get the particular pizza type by id
+    notes: Returns a pizza type with specified id
+    responseClass: Pizza
+    requestClass: Pizza
+    nickname: getPizzaById
+    consumes:
+    - text/json
+    parameters:
+    - name: id
+      dataType: integer
+      paramType: path
+      required: true
+      description: pizza Oder Id to be fetched
+- path: /pizza
+  operations:
+  - httpMethod: POST
+    summary: Add a new type of pizza
+    notes: adds a new type of pizza
+    responseClass: Pizza
+    requestClass: Pizza
+    nickname: postPizza
+    consumes:
+    - application/json
+    parameters:
+    - name: body
+      dataType: object
+      paramType: body
+      required: true
+      description: Pizza to be added
+
+models:
+  Orders:
+    id: Orders
+    adapter: mongo
+    connection : mongo
+    properties:
+      id:
+        type: int
+        primaryKey: true
+      order_name:
+        type: string
+      order_contents:
+        type: string
+      quantity:
+        type: int
+      order_status:
+        type: string
+  OrderAdd:
+    id: OrderAdd
+    properties:
+      id:
+        type: int
+      orderName:
+        type: string
+  Pizza:
+    id: Pizza
+    adapter: mongo
+    connection : mongo
+    properties:
+      id:
+        type: int
+    pizza_name:
+      type: string
+    pizza_contents:
+      type: string
+    pizza_size:
+      type: int
+  Status:
+    id: Status
+    properties:
+      statusInfo:
+        type: string
+  metadata:
+    id: metadata
+    adapter: oracle
+    connection : oracle
+    properties:
+      id:
+        type: int
+        primaryKey: true
+      version:
+        type: string
+      gitCommitId:
+        type: string
+      buildDate:
+        type: string
