@@ -6,7 +6,8 @@
     "aquajs"
   ],
   "dependencies": {
-    "aquajs-cli": "latest",
-    "aquajs-microservice": "latest"
+    "aquajs-microservice": "latest",
+    "aquajs-error": "latest",
+    "aquajs-mailer": "latest"
   }
 }
